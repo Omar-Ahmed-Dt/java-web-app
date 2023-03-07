@@ -11,6 +11,11 @@ pipeline {
         }
       }
     }
+    post {
+        success { 
+            archiveArtifacts artifacts: '**/*/*.*'
+        }
+    }
     stage("Quality Gate") {
       steps {
         timeout(time: 2, unit: 'MINUTES') {
