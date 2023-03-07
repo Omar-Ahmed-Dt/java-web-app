@@ -18,24 +18,5 @@ pipeline {
         }
       }
     }
-          stage("UploadArtifact"){
-            steps{
-                nexusArtifactUploader(
-                  nexusVersion: 'nexus3',
-                  protocol: 'http',
-                  nexusUrl: '107.22.129.54:8081',
-                  groupId: 'QA',
-                  version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
-                  repository: 'javaapp',
-                  credentialsId: 'jenkins_login',
-                  artifacts: [
-                    [artifactId: 'javaapp_v',
-                     classifier: '',
-                     file: '/.mvn/wrapper/maven-wrapper.jar',
-                     type: 'jar']
-                            ]
-                                     )
-                 }
-                                }
   }
 }
